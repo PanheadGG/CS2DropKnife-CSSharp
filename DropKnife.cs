@@ -2,11 +2,7 @@ using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Commands;
-using CounterStrikeSharp.API.Modules.Entities;
 using CounterStrikeSharp.API.Modules.Events;
-using CounterStrikeSharp.API.Modules.Utils;
-using Microsoft.VisualBasic;
-using System.Numerics;
 
 namespace DropKnife;
 public class DropKnife : BasePlugin
@@ -21,10 +17,6 @@ public class DropKnife : BasePlugin
     public override void Load(bool hotReload)
     {
         Console.WriteLine("Drop Knife Plugin Loaded!");
-        //RegisterListener<Listeners.OnTick>(() =>
-        //{
-        //    OnTickCheck();
-        //});
     }
     [GameEventHandler]
     public HookResult OnRoundStart(EventRoundStart @event, GameEventInfo info)
@@ -112,33 +104,4 @@ public class DropKnife : BasePlugin
             else drop_knife_only_one_time = true;
         }
     }
-
-
-    //public void OnTickCheck()
-    //{
-    //    foreach (CCSPlayerController player in Utilities.GetPlayers())
-    //    {
-    //        if (player.PawnIsAlive && player.Buttons.HasFlag(PlayerButtons.Use))
-    //        {
-    //            foreach (CKnife knife in Utilities.FindAllEntitiesByDesignerName<CKnife>("weapon_knife"))
-    //            {
-    //                if (knife != null)
-    //                {
-    //                    Vector3 p = new(player.PlayerPawn.Get()!.AbsOrigin!.X, player.PlayerPawn.Get()!.AbsOrigin!.Y, player.PlayerPawn.Get()!.AbsOrigin!.Z);
-    //                    Vector3 k = new(knife.AbsOrigin!.X, knife.AbsOrigin!.Y, knife.AbsOrigin!.Z);
-    //                    double distance = Vector3.Distance(k, p);
-    //                    //player.PrintToChat(Vector3.Distance(k, p).ToString());
-    //                    if(distance>5 && distance < 64)
-    //                    {
-    //                        player.PrintToChat("get knife");
-    //                        knife.Teleport(player.PlayerPawn.Get()!.AbsOrigin);
-    //                        player.ExecuteClientCommand("slot3;drop");
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
-
-    //}
-
 }
